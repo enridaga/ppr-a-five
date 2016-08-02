@@ -10,7 +10,7 @@ This project requires PHP and composer.
 Preparation:
 
 ```
-$ php composer.phar
+$ php composer.phar install
 ```
 
 Then inspect available commands:
