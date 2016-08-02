@@ -85,7 +85,7 @@ Cluster                                                          Branch         
 
 ### Adjustment
 Examples of operations that can be performed.
-In the examples below, `remove` detach a relation from a branch (removes the rdfs:subPropertyOf axiom from the ontology), and `fill` adds all the rules in order to make all sub properties of hasCache propagate all the policies in the intent of concept 99.
+In the examples below, `remove` detach a relation from a branch (removes the rdfs:subPropertyOf axiom from the ontology), and `fill` adds all the rules in order to make all sub properties of hasCache propagate all the policies in the intent of concept 99 (modifies the data loaded from context.csv).
 
 ```
 $ ./ppm-cli.sh operation remove --relation=http://purl.org/datanode/ns/hasCache --branch=http://purl.org/datanode/ns/hasStandIn             
