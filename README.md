@@ -114,5 +114,5 @@ $ ./ppm-cli.sh export ontology java --changes=5
 ## References
 [1] E. Daga, M. d’Aquin, A. Gangemi, and E. Motta. Propagation of policies in rich data flows. In Proceedings of the 8th In- ternational Conference on Knowledge Capture, K-CAP 2015, pages 5:1–5:8, New York, NY, USA, 2015. ACM.
 
-[2] E. Daga, A. Gangemi, and E. Motta. Reasoning with Data Flows and Policy Propagation Rules [SUBMITTED]
-http://www.semantic-web-journal.net/content/reasoning-data-flows-and-policy-propagation-rules
+[2] E. Daga, A. Gangemi, and E. Motta. Reasoning with Data Flows and Policy Propagation Rules [ACCEPTED]
+http://www.semantic-web-journal.net/content/reasoning-data-flows-and-policy-propagation-rules-1
