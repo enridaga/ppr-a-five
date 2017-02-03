@@ -47,6 +47,9 @@ class Datanode {
 		$relations = array_unique ( $relations );
 		return $relations;
 	}
+	public function branch($topRelation){
+		return $this->_reverse_transitive_closure ( $topRelation, $this->_triples, $this->_arc );
+	}
 	public function branches() {
 		if (! $this->_branches) {
 			// 'sort_by_size_desc'

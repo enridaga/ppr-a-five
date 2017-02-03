@@ -78,6 +78,18 @@ return array (
 												) 
 										) 
 								),
+								'branch' => array (
+									'type' => 'simple',
+										'options' => array(
+											'description' => 'Show a list of relations within a given branch.',
+											'route' => 'branch --relation= [-v] [--changes=]',
+											'defaults' => array (
+											'controller' => 'Propagation\Controller\Datanode',
+											'action' => 'branch',
+											'changes' => 'all'
+										)
+									)
+								),
 								'datanode-tree' => array (
 										'type' => 'simple',
 										'options' => array (
