@@ -1,15 +1,14 @@
 {
- "name": "PPR Manager",
- "repositories": [
-    {
-        "type": "composer",
-        "url": "https://packages.zendframework.com/"
-    }
- ],
- "require": {
-  "php": ">=5.5",
-  "zendframework/zend-mvc": "^2.5",
-  "zendframework/zend-log": "^2.5",
-  "zendframework/zend-config": "^2.5"
- }
+	"name" : "PPR Manager",
+	"repositories" : [{
+			"type" : "composer",
+			"url" : "https://packages.zendframework.com/"
+		}
+	],
+	"require" : {
+		"php" : ">=5.5",
+		"zendframework/zend-mvc" : "^2.5",
+		"zendframework/zend-log" : "^2.5",
+		"zendframework/zend-config" : "^2.5"
+	}
 }

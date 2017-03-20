@@ -251,6 +251,18 @@ return array (
 												) 
 										) 
 								),
+								'operation-rule' => array (
+										'type' => 'simple',
+										'options' => array (
+												'description' => 'Perform operation: change rule',
+												'route' => 'operation (permission|prohibition|duty):deontic --relation= --activity= --value= [-v]',
+												'defaults' => array (
+														'controller' => 'Propagation\Controller\Operation',
+														'value' => '1',
+														'action' => 'rule'
+												) 
+										) 
+								),
 								'export-ontology' => array (
 										'type' => 'simple',
 										'options' => array (
@@ -321,7 +333,15 @@ return array (
 						array (
 								'--compress',
 								'Flag. Default is False.' 
-						) 
+						),
+						array(
+								'--relation',
+								'Datanode property. Eg: hasDerivation'
+						),
+						array(
+								'--activity',
+								'Action to be permitted/prohibited/duty. Eg: use, http://creativecommons.org/ns#DerivativeWorks'
+						)
 				) 
 		)
 		,

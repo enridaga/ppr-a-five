@@ -141,11 +141,17 @@ class AbstractController extends AbstractActionController {
 	}
 	protected function _consoleConfirm($msg) {
 		$confirmation = $this->_consoleInput ( $msg );
-		if ($confirmation !== 'y') {
+		if (strtolower($confirmation) !== 'y') {
 			// The user did not say 'y'.
 			return FALSE;
 		}
 		return TRUE;
+	}
+	protected function _asDN($relation){
+		if(strpos($relation,'http://purl.org/datanode/ns/') === FALSE){
+			$relation = 'http://purl.org/datanode/ns/' . $relation;
+		}
+		return $relation;
 	}
 	protected function _consoleInput($msg) {
 		print $msg . "\n";

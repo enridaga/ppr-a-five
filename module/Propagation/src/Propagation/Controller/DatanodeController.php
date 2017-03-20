@@ -11,7 +11,7 @@ class DatanodeController extends AbstractController {
 		return $this->_render_branches ( $this->_datanode ()->branches () );
 	}
 	public function branchAction(){
-		$rel = $this->getRequest ()->getParam ( 'relation' );
+		$rel = $this->_asDN($this->getRequest ()->getParam ( 'relation' ));
 		$set = $this->_datanode ()->branch ($rel);
 		return $this->_render_relations($set);
 	}

@@ -202,10 +202,16 @@ class ExportController extends AbstractController {
 	}
 	public function _render_rules_rdf(array $rules) {
 		ob_start ();
+		$rendered = array();
 		foreach ( $rules as $rule ) {
 			$dn_property = $rule [0];
 			$policy = $rule [1];
-			print $this->_make_rule_as_nt ( $dn_property, $policy );
+			$nt = $this->_make_rule_as_nt ( $dn_property, $policy );
+			print $nt[0] ;
+			if(!in_array($nt[1],$rendered)){
+				print $nt[1];
+				array_push($rendered, $nt[1]);
+			}
 		}
 		return ob_get_clean ();
 	}
@@ -236,6 +242,6 @@ class ExportController extends AbstractController {
 		$deontic = $odrl . $pp [0];
 		$action = $pp [1];
 		$policyId = self::build_policy_id ( $deontic, $action );
-		return "<$dn_property> <$prop> <{$ppr}$policyId> .\n<{$ppr}$policyId> <$deontic> <$action> .\n";
+		return array("<$dn_property> <$prop> <{$ppr}$policyId> .\n","<{$ppr}$policyId> <$deontic> <$action> .\n");
 	}
 }

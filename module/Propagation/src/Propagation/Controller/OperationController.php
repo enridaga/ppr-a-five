@@ -9,10 +9,10 @@ class OperationController extends AbstractController {
 	
 	public function fillAction(){
 		$cID = $this->getRequest()->getParam('cid');
-		$dn = $this->getRequest()->getParam('branch');
-		if(strpos($dn, 'http://') !== 0){
-			$dn = "http://purl.org/datanode/ns/" . $dn;
-		}
+		$dn = $this->_asDN($this->getRequest()->getParam('branch'));
+// 		if(strpos($dn, 'http://') !== 0){
+// 			$dn = "http://purl.org/datanode/ns/" . $dn;
+// 		}
 		$intersections = $this->_analysis()->intersections();
 		$branches = $this->_branches();
 		$extents = $this->_lattice()->extents();
@@ -211,6 +211,39 @@ class OperationController extends AbstractController {
 		}
 		return ob_get_clean ();
 	}
+	
+	public function ruleAction(){
+		$request = $this->getRequest ();
+		$verbose = $request->getParam ( 'v', FALSE );
+		$relation = $request->getParam( 'relation', FALSE);
+		$relation = $this->_asDN($relation);
+		$deontic = $request->getParam( 'deontic', FALSE);
+		$action = $request->getParam( 'activity', FALSE);
+		if(strpos($action,"http://") === FALSE){
+			$action = 'http://www.w3.org/ns/odrl/2/' . $action;
+		}
+		
+		$value = $request->getParam( 'value', '1');
+		if(!($relation && $deontic && $action)){
+			print "Nothing to do.\n";
+			return;
+		}
+		
+		$type = "change context";
+		$comment = "Change $relation $deontic $action set to $value";
+		print "Stack change: $type\n";
+		print "Reason: $comment\n";
+		$data = array (array($relation,$deontic . ' ' . $action, $value));
+		if ($this->_consoleConfirm ( "Are you sure you want to stack this change?" )) {
+			// perform changes
+			print "Performing change.\n";
+			$this->_database()->addChange ( $type, serialize ( $data ), $comment );
+		} else {
+			print "Nothing to do.\n";
+		}
+		
+	}
+	
 	function _print_change($change, $showData = FALSE) {
 		print "Id: " . $change [0] . "\n";
 		print "Time: " . date ( DATE_ATOM, $change [1] ) . "\n";
